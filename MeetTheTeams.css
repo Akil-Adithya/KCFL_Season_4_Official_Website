@@ -1,0 +1,420 @@
+/* ===== Body & Background ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Lato, sans-serif;
+    background: linear-gradient(135deg, #f8ff9d, #9e9c64, #9a9663);
+    background-size: 400% 400%;
+    animation: gradientBG 5s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* NAVBAR */
+#menubar-wrapper {
+    background-color: #0a0a23;
+    padding: 10px 40px;
+    
+}
+
+#menubar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1000;
+}
+
+.logo {
+    max-height: 70px;
+    height: auto;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    font-weight: bold;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.hamburger div {
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+}
+
+.nav-links.active {
+    display: flex;
+    animation: popup 0.3s ease-out forwards;
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #0a0a23;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        transition: max-height 0.3s ease-out;
+        overflow: hidden;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        padding: 15px 0;
+        border-bottom: 1px solid #222;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 12px 0;
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;             /* anchor to the right under the hamburger */
+        width: auto;          /* shrink to fit content */
+        min-width: 180px;     /* optional: prevent it from being too tiny */
+        background: #0a0a23;
+        border-radius: 6px;
+        padding: 10px 0;
+        text-align: left;     /* optional: align text left like a popup */
+    }
+
+    .nav-links li {
+        width: 100%;
+        margin: 0;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 12px 20px;
+        width: 100%;
+        text-align: left;  /* or center if you prefer */
+    }
+}
+/* ===== Tiles Container Wrapper ===== */
+.hover-tiles-wrapper {
+    padding: 20px;
+}
+
+/* ===== Tiles ===== */
+.hover-tiles {
+    display: block;
+    max-width: 1200px; /* limits total width on big screens */
+    margin: 0 auto;     /* centers the container */
+}
+
+/* Wrapper for each tile to add external spacing */
+.team-card-wrapper {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+.tile {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 16px;
+    background: #2d2d4f;
+    color: #fff;
+    padding: 44px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 16px rgba(0,0,0,.15);
+    cursor: pointer;
+    text-decoration: none; /* ensures <a> link has no underline */
+    max-width: none;
+}
+
+.tile:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 28px rgba(0,0,0,.25);
+}
+
+/* Player section */
+.players {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.player {
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.player:hover {
+    background: rgba(255,255,255,0.15);
+    transform: scale(1.02);
+}
+
+.player-stats {
+    display: block;
+    margin: 6px auto 0 auto;
+    width: 50%;
+    border-radius: 8px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.player.active .player-stats {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+/* Team logo and name */
+.team-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 16px auto;
+}
+
+.team-name {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+/* Savings and stats */
+.savings {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat .value {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.stat .label {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+/* ===== Mobile Adjustments ===== */
+@media (max-width: 1024px) {
+    .hover-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .team-card-wrapper {
+        max-width: 600px;
+        margin: 20px auto;
+    }
+
+    .tile {
+        max-width: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hover-tiles-wrapper {
+        padding: 10px;
+    }
+
+    .hover-tiles {
+        grid-template-columns: 1fr; /* single column on phones */
+        padding: 0;
+        gap: 20px;
+    }
+
+    .team-card-wrapper {
+        max-width: 100%;
+        margin: 20px 0;
+    }
+
+    .tile {
+        padding: 16px;
+        max-width: none;
+    }
+}
+
+/* ===== Desktop Large Screen Adjustments ===== */
+@media (min-width: 1200px) {
+    .hover-tiles {
+        display: block;
+        max-width: 1200px;
+    }
+    .team-card-wrapper {
+        max-width: 1200px;
+        margin: 20px auto;
+    }
+    .tile {
+        max-width: none;
+    }
+}
+
+/* ===== Footer ===== */
+footer {
+    background-color: #1f2937;
+    color: white;
+    padding: 3rem 1rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-logo-text p:first-child {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.footer-logo-text p:last-child {
+    font-size: 1rem;
+    color: #9ca3af;
+}
+
+.footer-links h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.footer-links a:hover {
+    color: #3b82f6;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.social-links .flex {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.social-links img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+.social-links span {
+    font-size: 1rem;
+}
+
+/* ===== Mobile Footer ===== */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-logo {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}

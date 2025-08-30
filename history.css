@@ -1,0 +1,437 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Lato, sans-serif;
+    background: linear-gradient(135deg, #f8ff9d, #9e9c64,#9a9663);
+    background-size: 400% 400%;
+    animation: gradientBG 5s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* NAVBAR */
+#menubar-wrapper {
+    background-color: #0a0a23;
+    padding: 10px 40px;
+    
+}
+
+#menubar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1000;
+}
+
+.logo {
+    max-height: 70px;
+    height: auto;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    font-weight: bold;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.hamburger div {
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+}
+
+.nav-links.active {
+    display: flex;
+    animation: popup 0.3s ease-out forwards;
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #0a0a23;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        transition: max-height 0.3s ease-out;
+        overflow: hidden;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        padding: 15px 0;
+        border-bottom: 1px solid #222;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 12px 0;
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;             /* anchor to the right under the hamburger */
+        width: auto;          /* shrink to fit content */
+        min-width: 180px;     /* optional: prevent it from being too tiny */
+        background: #0a0a23;
+        border-radius: 6px;
+        padding: 10px 0;
+        text-align: left;     /* optional: align text left like a popup */
+    }
+
+    .nav-links li {
+        width: 100%;
+        margin: 0;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 12px 20px;
+        width: 100%;
+        text-align: left;  /* or center if you prefer */
+    }
+}
+
+.banner img {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.banner-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.banner-container img {
+    width: 100%;
+    display: block;
+}
+
+/* cards */
+
+
+.match-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  max-height: none;
+}
+
+.match-card:hover {
+  border: 2px solid #007BFF;
+  transform: scale(1.02);
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+.match-date {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.teams {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.final-score {
+    font-size: 20px;
+    font-weight: bold;
+    background: #f1f1f1;
+    padding: 4px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-top: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* centers both VS and score */
+    gap: 4px;
+    min-width: 80px;
+}
+
+.team-logo {
+    width: 100%;
+    max-width: 75px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.vs {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.match-stats {
+    margin-top: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.match-card:hover .match-stats {
+    max-height: 500px;
+}
+
+.stat {
+    margin: 15px 0;
+}
+
+.stat span {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.stat-bar { 
+    display:flex; 
+    height:28px; 
+    background:#e9eef5; 
+    border-radius:999px; 
+    overflow:hidden; 
+}
+
+.bar { 
+    width:0; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center;
+    font-weight:700; 
+    color:#fff; 
+    transition:width .6s ease; 
+}
+
+.teamA { 
+    background:#2f6efb; 
+}
+.teamB { 
+    background:#ff4b4b; 
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 70px;
+  padding: 10px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: start;
+}
+
+/* On mobile, stack cards vertically */
+@media (max-width: 768px) {
+  .matches-grid {
+    grid-template-columns: 1fr;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* On smaller mobile screens (e.g., iPhone 14) */
+@media (max-width: 480px) {
+  .matches-grid {
+    grid-template-columns: 1fr;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* ===== Footer Styling ===== */
+footer {
+    background-color: #1f2937; /* dark gray */
+    color: white;
+    padding: 3rem 1rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+/* Logo Section */
+.footer-logo {
+    display: flex;
+    align-items: center; /* centers logo vertically with text */
+    gap: 1rem;
+}
+
+.footer-logo img {
+    height: 120px; /* bigger logo */
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-logo-text p:first-child {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.footer-logo-text p:last-child {
+    font-size: 1.1rem;
+    color: #9ca3af; /* light gray */
+}
+
+/* Links Section */
+.footer-links h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #3b82f6; /* blue hover */
+}
+
+.footer-links div {
+    margin-bottom: 0.5rem;
+}
+
+/* Social Section */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.social-links .flex {
+    display: flex;
+    align-items: center; /* icon aligned with text */
+    gap: 0.5rem;
+}
+
+.social-links img {
+    height: 32px; /* uniform icon size */
+    width: 32px;
+    object-fit: contain;
+}
+
+.social-links span {
+    font-size: 1.1rem;
+}
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-logo {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Stats Board Styling */
+.stats-board {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem 1rem;
+    background-color: #111827; /* dark background to match footer */
+    color: white;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    color: #9ca3af; /* light gray */
+    margin-top: 0.5rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .stats-board {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+    .stat-number {
+        font-size: 2.5rem;
+    }
+}

@@ -1,0 +1,377 @@
+body {
+    background-color: #0a0a23;
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* NAVBAR */
+#menubar-wrapper {
+    background-color: #0a0a23;
+    padding: 10px 40px;
+}
+
+#menubar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1000;
+}
+
+.logo {
+    max-height: 70px;
+    height: auto;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.hamburger div {
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #0a0a23;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        transition: max-height 0.3s ease-out;
+        overflow: hidden;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        padding: 15px 0;
+        border-bottom: 1px solid #222;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 12px 0;
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+/* Banner */
+.banner {
+    position: relative;
+    width: 100%;
+}
+.banner img {
+    width: 100%;
+    display: block;
+}
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+.banner-text h1 {
+    font-size: 48px;
+}
+.banner-text p {
+    font-size: 18px;
+}
+@media (max-width: 768px) {
+    .banner-text h1 {
+        font-size: 24px;
+    }
+    .banner-text p {
+        font-size: 14px;
+    }
+}
+
+/* Countdown Box */
+.countdown-box {
+    position: relative;
+    width: 75%;
+    max-width: 800px;
+    height: 300px;
+    background-image: url('ImagesArchive/countdownBG.jpg'); /* make sure this path exists */
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 50px auto;
+}
+
+.countdown-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 1rem;
+}
+
+#countdown-timer {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.countdown-match-info {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+/* Responsive countdown box */
+@media (max-width: 768px) {
+    .countdown-box {
+        width: 90%;
+        min-height: 200px;   /* ensures it doesn't collapse */
+        height: auto;
+        padding: 20px;
+    }
+    #countdown-timer {
+        font-size: 24px;
+    }
+    .countdown-match-info {
+        font-size: 16px;
+    }
+}
+
+/* Cards */
+.card-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px 0;
+}
+.card {
+    flex: 1 1 300px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    max-width: 300px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 0 1 90%;     /* make cards take up about 90% of screen width */
+        max-width: 350px;  /* prevent them from getting too large */
+        margin: 10px auto; /* center them */
+    }
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+.card-body {
+    padding: 16px;
+}
+.card-btn {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0a0a23;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Stats Board */
+.stats-board {
+    background: #111827;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+.stats-board-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+.stats-item h4 {
+    margin-bottom: 10px;
+}
+.stats-number {
+    font-size: 24px;
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .stats-number {
+        font-size: 18px;
+    }
+}
+.nav-links.active {
+    display: flex;
+    animation: popup 0.3s ease-out forwards;
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;             /* anchor to the right under the hamburger */
+        width: auto;          /* shrink to fit content */
+        min-width: 180px;     /* optional: prevent it from being too tiny */
+        background: #0a0a23;
+        border-radius: 6px;
+        padding: 10px 0;
+        text-align: left;     /* optional: align text left like a popup */
+    }
+
+    .nav-links li {
+        width: 100%;
+        margin: 0;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 12px 20px;
+        width: 100%;
+        text-align: left;  /* or center if you prefer */
+    }
+}
+
+/* ===== Footer ===== */
+footer {
+    background-color: #1f2937;
+    color: white;
+    padding: 3rem 1rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-logo-text p:first-child {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.footer-logo-text p:last-child {
+    font-size: 1rem;
+    color: #9ca3af;
+}
+
+.footer-links h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.footer-links a:hover {
+    color: #3b82f6;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.social-links .flex {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.social-links img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+.social-links span {
+    font-size: 1rem;
+}
+
+/* ===== Mobile Footer ===== */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-logo {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
